@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "sqlalchemy-play"
+version = "0.1.0"
+description = ""
+authors = ["Mike Baynton <mike@mbaynton.com>"]
+readme = "README.md"
+packages = [{include = "sqlalchemy_play"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+sqlalchemy = "^2.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
