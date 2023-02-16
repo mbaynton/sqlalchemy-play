@@ -2,7 +2,7 @@ import sqlalchemy
 from sqlalchemy import or_
 from sqlalchemy.orm import sessionmaker, with_polymorphic
 
-from model.applications import Applications, Person
+from model.applications import Applications, EnhancedApplications, Person
 
 if __name__ == "__main__":
     engine = sqlalchemy.create_engine("sqlite:///../db.sqlite", echo = True)
@@ -20,7 +20,7 @@ if __name__ == "__main__":
         """
 
         apps = db.query(with_polymorphic(Applications, '*'))\
-            .join(Person) \
+            .join(Applications.owner) \
             .filter(or_(Applications.name.like('%test%')))
 
         """
