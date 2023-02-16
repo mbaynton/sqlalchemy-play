@@ -8,7 +8,7 @@ packages = [{include = "sqlalchemy_play"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-sqlalchemy = "^2.0.2"
+sqlalchemy = "1.4.29"
 
 
 [build-system]
