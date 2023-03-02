@@ -2,7 +2,7 @@ import sqlalchemy
 from sqlalchemy import or_
 from sqlalchemy.orm import sessionmaker, with_polymorphic, aliased
 
-from model.applications import Applications, Person
+from model.stiapplications import Applications
 
 if __name__ == "__main__":
     engine = sqlalchemy.create_engine("sqlite:///../db.sqlite", echo = True)
@@ -10,9 +10,8 @@ if __name__ == "__main__":
 
     with Session() as db:
 
-        # Produces FROM enhanced_applications, super_applications, applications JOIN persons ON persons.id = applications.owner_id
-        alias_alias = aliased(with_polymorphic(Applications, '*'))
-        apps = db.query(alias_alias)\
+        # Produces FROM applications JOIN persons ON persons.id = applications.owner_id
+        apps = db.query(with_polymorphic(Applications, '*'))\
             .join(Applications.owner)
 
         """
